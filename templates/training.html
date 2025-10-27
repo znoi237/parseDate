@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header"><strong>Запуск обучения</strong></div>
+      <div class="card-body">
+        <div class="mb-2">
+          <label class="form-label">Пара</label>
+          <input class="form-control" id="train_symbol" placeholder="BTC/USDT" />
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Таймфреймы</label>
+          <select id="train_tfs" class="form-select" multiple>
+            <option>15m</option><option>1h</option><option>4h</option><option>1d</option><option>1w</option>
+          </select>
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Глубина истории (лет)</label>
+          <input type="number" min="1" max="10" value="3" id="train_years" class="form-control" />
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary" onclick="syncHistory()">Синхронизировать историю</button>
+          <button class="btn btn-success" onclick="startTraining()">Запустить обучение</button>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3">
+      <div class="card-header"><strong>Статус задачи</strong></div>
+      <div class="card-body" id="train_job_box">—</div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header"><strong>Подсказки</strong></div>
+      <div class="card-body text-muted">
+        <ul>
+          <li>Обучение идёт пер‑таймфрейм многопоточно.</li>
+          <li>Повторный запуск сделает инкрементальное дообучение (без переобучения на старом массиве).</li>
+          <li>Данные качаются с Binance mainnet через CCXT, инкрементально.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/training.js"></script>
+{% endblock %}

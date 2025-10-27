@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row g-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header"><strong>Статус системы</strong></div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <div class="p-3 border rounded">
+              <div class="text-muted">Mainnet</div>
+              <div id="acc_mainnet" class="fs-5">...</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="p-3 border rounded">
+              <div class="text-muted">Testnet</div>
+              <div id="acc_testnet" class="fs-5">...</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="p-3 border rounded">
+              <div class="text-muted">WS</div>
+              <div id="ws_status" class="fs-5"><span class="badge bg-warning">инициализация</span></div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="p-3 border rounded">
+              <div class="text-muted">Обучение</div>
+              <div id="train_status" class="fs-5"><span class="badge bg-info">нет задач</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Пары и статусы -->
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header"><strong>Список пар — статус обучения</strong></div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-sm align-middle" id="pairs_table">
+            <thead><tr><th>Пара</th><th>Обучена</th><th>Крайнее полное</th><th>Крайнее дообучение</th><th>Accuracy</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <button class="btn btn-primary btn-sm" id="btn_refresh_pairs">Обновить</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Журнал сделок -->
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header"><strong>Журнал сделок</strong></div>
+      <div class="card-body">
+        <div class="table-responsive" style="max-height:360px; overflow:auto">
+          <table class="table table-sm" id="trades_table">
+            <thead><tr><th>Время</th><th>Пара</th><th>Сторона</th><th>PnL%</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <button class="btn btn-outline-light btn-sm" id="btn_refresh_trades">Обновить</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Новости -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header"><strong>Новости (24ч)</strong></div>
+      <div class="card-body">
+        <div class="table-responsive" style="max-height:280px; overflow:auto">
+          <table class="table table-sm" id="news_table">
+            <thead><tr><th>Время</th><th>Источник</th><th>Заголовок</th><th>Сентимент</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <button class="btn btn-outline-light btn-sm" id="btn_refresh_news">Обновить</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/main.js"></script>
+<script>
+  window.addEventListener("load", () => {
+    refreshAccounts();
+    refreshPairs();
+    refreshTrades();
+    refreshNews();
+  });
+</script>
+{% endblock %}

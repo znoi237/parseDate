@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div class="card-header"><strong>Боты</strong></div>
+  <div class="card-body">
+    <div class="row g-2">
+      <div class="col-md-3"><input class="form-control" id="bot_symbol" placeholder="BTC/USDT"></div>
+      <div class="col-md-5">
+        <select multiple class="form-select" id="bot_tfs">
+          <option>15m</option><option>1h</option><option>4h</option><option>1d</option><option>1w</option>
+        </select>
+      </div>
+      <div class="col-md-2"><input class="form-control" id="bot_interval" value="60"></div>
+      <div class="col-md-2 d-grid">
+        <button class="btn btn-success" onclick="startBot()">Старт</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card mt-3">
+  <div class="card-header"><strong>Активные боты</strong></div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-sm" id="bots_table">
+        <thead><tr><th>Пара</th><th>Статус</th><th>Статистика</th><th>Старт</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <button class="btn btn-outline-light btn-sm" onclick="loadBots()">Обновить</button>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/bots.js"></script>
+{% endblock %}

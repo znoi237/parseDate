@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div class="card-header"><strong>Настройки торговли</strong></div>
+  <div class="card-body">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <label class="form-label">Интервал сигнала (сек)</label>
+        <input class="form-control" id="sig_int" value="60" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Размер позиции (USDT)</label>
+        <input class="form-control" id="pos_size" value="10" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">SL %</label>
+        <input class="form-control" id="slp" value="2.0" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">TP %</label>
+        <input class="form-control" id="tpp" value="4.0" />
+      </div>
+    </div>
+    <div class="mt-3 text-muted">Для MVP настройки применяются вручную в коде/конфиге.</div>
+  </div>
+</div>
+{% endblock %}

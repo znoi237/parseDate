@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div class="card-header"><strong>Настройка индикаторов</strong></div>
+  <div class="card-body">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label class="form-label">RSI период</label>
+        <input class="form-control" id="rsi_period" value="14" />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">SMA период</label>
+        <input class="form-control" id="sma_period" value="20" />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Порог сигнала</label>
+        <input class="form-control" id="sig_thr" value="0.8" />
+      </div>
+    </div>
+    <div class="mt-3">
+      <button class="btn btn-primary">Сохранить</button>
+      <span class="text-muted ms-2">Для MVP параметры сохраняются в env/Config.</span>
+    </div>
+  </div>
+</div>
+{% endblock %}

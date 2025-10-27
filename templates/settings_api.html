@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header"><strong>Mainnet API</strong></div>
+      <div class="card-body">
+        <div id="mainnet_keys" class="text-muted mb-2">...</div>
+        <div class="mb-2"><input class="form-control" id="mn_key" placeholder="API key"></div>
+        <div class="mb-2"><input class="form-control" id="mn_secret" placeholder="API secret"></div>
+        <button class="btn btn-primary" onclick="saveKeys('mainnet')">Сохранить</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header"><strong>Testnet API (торговля)</strong></div>
+      <div class="card-body">
+        <div id="testnet_keys" class="text-muted mb-2">...</div>
+        <div class="mb-2"><input class="form-control" id="tn_key" placeholder="API key"></div>
+        <div class="mb-2"><input class="form-control" id="tn_secret" placeholder="API secret"></div>
+        <button class="btn btn-primary" onclick="saveKeys('testnet')">Сохранить</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/settings_api.js"></script>
+{% endblock %}

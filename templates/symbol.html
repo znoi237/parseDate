@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row g-3">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header"><strong id="sym_title">Символ</strong></div>
+      <div class="card-body">
+        <canvas id="ohlc_chart" height="140"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+<script src="/static/js/symbol.js"></script>
+{% endblock %}
